@@ -1,0 +1,8 @@
+.common__section {
+  height: 120px;
+}
+
+.common__section h1 {
+  color: black;
+  font-weight: 600;
+}
