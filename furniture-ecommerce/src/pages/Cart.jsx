@@ -35,6 +35,11 @@ const Cart = () => {
     }
   };
 
+  // Mengosongkan keranjang setelah melakukan checkout
+  const handleCheckout = () => {
+    dispatch(cartActions.emptyCart());
+  };
+
   return (
     <Helmet title="Cart">
       <CommonSection title="Shopping Cart" />
@@ -118,7 +123,7 @@ const Cart = () => {
               </div>
               <div>
                 {/* Tombol untuk checkout */}
-                <button className="buy__btn">
+                <button className="buy__btn" onClick={handleCheckout}>
                   <Link to="/history">Checkout</Link>
                 </button>
               </div>
