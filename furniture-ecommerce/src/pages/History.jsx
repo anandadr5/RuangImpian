@@ -10,7 +10,7 @@ const History = () => {
 
   // Fungsi untuk menghitung total harga dari item dalam history
   const calculateTotalPrice = () => {
-    return cart.cartItems.reduce((total, product) => {
+    return cart.checkoutHistory.reduce((total, product) => {
       return total + product.totalPrice;
     }, 0);
   };
@@ -22,7 +22,7 @@ const History = () => {
         <Container>
           <Row>
             <Col lg="9">
-              {cart.cartItems.length === 0 ? (
+              {cart.checkoutHistory.length === 0 ? (
                 <h2 className="fs-4">No purchase history yet!</h2>
               ) : (
                 <table className="table bordered">
@@ -36,7 +36,7 @@ const History = () => {
                   </thead>
 
                   <tbody>
-                    {cart.cartItems.map((product) => (
+                    {cart.checkoutHistory.map((product) => (
                       <tr key={product.id}>
                         <td>
                           <img src={product.image} alt={product.productName} />
