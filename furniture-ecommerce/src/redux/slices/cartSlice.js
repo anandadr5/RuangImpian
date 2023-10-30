@@ -5,6 +5,7 @@ const initialState = {
   cartItems: [], // Menyimpan item-item dalam keranjang
   totalAmount: 0, // Menyimpan total harga keseluruhan dalam keranjang
   totalQuantity: 0, // Menyimpan total jumlah item dalam keranjang
+  checkoutHistory: [], // Menyimpan riwayat produk yang telah di checkout
 };
 
 // Membuat slice (potongan) Redux dengan nama "cart" dan initialState yang telah ditentukan
@@ -84,6 +85,14 @@ const cartSlice = createSlice({
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + item.totalPrice
       );
+    },
+
+    // Action "emptyCart" untuk menghapus semua item dari keranjang setelah melakukan checkout
+    emptyCart: (state) => {
+      state.checkoutHistory = state.checkoutHistory.concat(state.cartItems);
+      state.cartItems = [];
+      state.totalQuantity = 0;
+      state.totalAmount = 0;
     },
   },
 });
