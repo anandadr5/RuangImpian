@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/header.css";
 import { motion } from "framer-motion";
-import logo from "../../assets/images/ri-logo.png";
 import userIcon from "../../assets/images/user-icon.png";
 import { Container, Row } from "reactstrap";
 import { useSelector } from "react-redux";
@@ -95,7 +94,6 @@ const Header = () => {
         <Row>
           <div className="nav__wrapper">
             <div className="logo">
-              <img src={logo} alt="logo" />
               <div>
                 <h1>RuangImpian</h1>
               </div>
