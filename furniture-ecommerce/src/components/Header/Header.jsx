@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import "firebase/auth";
 import { auth } from "../../pages/firebase.config";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const nav__links = [
   {
@@ -71,6 +72,7 @@ const Header = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
+        toast.success("Logout berhasil");
         navigate("/home");
       })
       .catch((error) => {
@@ -79,11 +81,11 @@ const Header = () => {
   };
 
   const handleLogin = () => {
-    navigate("/login"); // Ganti "/login" dengan URL halaman login yang sesuai
+    navigate("/login");
   };
 
   const handleSignup = () => {
-    navigate("/signup"); // Ganti "/signup" dengan URL halaman signup yang sesuai
+    navigate("/signup");
   };
 
   return (
