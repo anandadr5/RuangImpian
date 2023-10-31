@@ -9,6 +9,7 @@ import "firebase/auth";
 import { auth } from "../../pages/firebase.config";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import Chat from "../OpenAI/Chat";
 
 const nav__links = [
   {
@@ -31,6 +32,7 @@ const Header = () => {
   const menuRef = useRef(null);
   const navigate = useNavigate();
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [chatVisible, setChatVisible] = useState(false);
 
   const stickyHeaderFunc = () => {
     if (headerRef.current) {
@@ -87,6 +89,11 @@ const Header = () => {
     navigate("/signup");
   };
 
+  const handleChatClick = () => {
+    setChatVisible(!chatVisible);
+    navigate("/chat");
+  };
+
   return (
     <header className="header" ref={headerRef}>
       <div></div>
@@ -113,6 +120,11 @@ const Header = () => {
                     </NavLink>
                   </li>
                 ))}
+                <li className="nav__item">
+                  <div onClick={handleChatClick} style={{ cursor: "pointer" }}>
+                    <span>OpenAI</span>
+                  </div>
+                </li>
               </ul>
             </div>
 
