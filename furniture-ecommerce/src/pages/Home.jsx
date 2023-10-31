@@ -86,17 +86,17 @@ const Home = () => {
             <Col lg="6" md="6">
               <div className="hero__content">
                 <p className="hero__subtitle">Trending product in {year}</p>
-                <h2>Memperindah Rumah Anda Dengan Furniture Berkualitas</h2>
+                <h2>Beautify Your Home With Quality Furniture</h2>
                 <p>
-                  Ubah interior Anda menjadi ruang yang lebih minimalis dan
-                  modern. Dengan koleksi furnitur kami, Anda dapat menciptakan
-                  lingkungan hidup yang lebih bersih, terorganisir, dan terkini.
-                  Jelajahi produk kami dan jadikan interior Anda lebih simpel
-                  dan kekinian.
+                  Transform your interior into a more minimalist and modern
+                  space. With our furniture collection, you can create a
+                  cleaner, more organized and up-to-date living environment.
+                  Explore our products and make your interior simpler and more
+                  contemporary.
                 </p>
 
                 <motion.button whileTap={{ scale: 1.2 }} className="buy__btn">
-                  <Link to="/shop">BELANJA SEKARANG</Link>
+                  <Link to="/shop">SHOP NOW</Link>
                 </motion.button>
               </div>
             </Col>
@@ -116,7 +116,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center mb-5">
-              <h2 className="section__title">Penjualan Terbaik</h2>
+              <h2 className="section__title">BEST SALES</h2>
             </Col>
           </Row>
           <Row>
@@ -159,14 +159,14 @@ const Home = () => {
               style={{ color: "black" }}
             >
               <div className="clock__top-content">
-                <h4 className="fs-6 mb-2">Penawaran Terbatas</h4>
+                <h4 className="fs-6 mb-2">Limited Offer</h4>
               </div>
               <Clock />
               <motion.button
                 whileTap={{ scale: 1.2 }}
                 className="buy__btn store__btn"
               >
-                <Link to="/shop">Kunjungi</Link>
+                <Link to="/shop">Visit Sotre</Link>
               </motion.button>
             </Col>
             <Col lg="6" md="12" className="text-end counter__img">
@@ -180,7 +180,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center mb-5">
-              <h2 className="section__title">Direkomendasikan Untuk Anda</h2>
+              <h2 className="section__title">Recommended For You</h2>
             </Col>
           </Row>
           <Row>

@@ -47,7 +47,7 @@ const Clock = () => {
       <div className="clock__data d-flex align-items-center gap-3">
         <div className="text-center">
           <h1 className="fs-3 mb-2">{days} </h1>
-          <h5 className="fs-6">Hari</h5>
+          <h5 className="fs-6">Days</h5>
         </div>
         <span className="fs-3">:</span>
       </div>
@@ -55,7 +55,7 @@ const Clock = () => {
       <div className="clock__data d-flex align-items-center gap-3">
         <div className="text-center">
           <h1 className="fs-3 mb-2">{hours} </h1>
-          <h5 className="fs-6">Jam</h5>
+          <h5 className="fs-6">Hours</h5>
         </div>
         <span className="fs-3">:</span>
       </div>
@@ -63,7 +63,7 @@ const Clock = () => {
       <div className="clock__data d-flex align-items-center gap-3">
         <div className="text-center">
           <h1 className="fs-3 mb-2">{minutes} </h1>
-          <h5 className="fs-6">Menit</h5>
+          <h5 className="fs-6">Minutes</h5>
         </div>
         <span className="fs-3">:</span>
       </div>
@@ -71,7 +71,7 @@ const Clock = () => {
       <div className="clock__data d-flex align-items-center gap-3">
         <div className="text-center">
           <h1 className="fs-3 mb-2">{seconds} </h1>
-          <h5 className="fs-6">Detik</h5>
+          <h5 className="fs-6">Seconds</h5>
         </div>
       </div>
     </div>

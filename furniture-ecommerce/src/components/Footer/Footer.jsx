@@ -17,9 +17,9 @@ const Footer = () => {
               </div>
             </div>
             <p className="footer__text mt-4">
-              RuangImpian adalah toko online yang menyediakan berbagai jenis
-              furnitur dan peralatan rumah tangga. Anda dapat menemukan berbagai
-              produk berkualitas untuk menghias dan mempercantik rumah Anda.
+              RuangImpian is an online shop that provides various types of
+              furniture and household equipment. You can find various quality
+              products to decorate and beautify your home.
             </p>
           </Col>
           <Col lg="3" md="3" className="mb-4">

@@ -53,7 +53,7 @@ const History = () => {
             <Col lg="3">
               <div>
                 <h6 className="d-flex align-items-center justify-content-between">
-                  Total
+                  Total Price
                 </h6>
                 <span className="fs-4 fw-bold">Rp {calculateTotalPrice()}</span>
               </div>

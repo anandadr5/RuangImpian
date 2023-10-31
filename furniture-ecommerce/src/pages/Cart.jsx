@@ -113,14 +113,14 @@ const Cart = () => {
             <Col lg="3">
               <div>
                 <h6 className="d-flex align-items-center justify-content-between">
-                  Total
+                  Total Price
                 </h6>
                 <span className="fs-4 fw-bold">Rp {calculateTotalPrice()}</span>
               </div>
               <div>
                 {/* Tombol untuk melanjutkan berbelanja */}
                 <button className="buy__btn" style={{ cursor: "pointer" }}>
-                  <Link to="/shop">Lanjut berbelanja</Link>
+                  <Link to="/shop">Continue Shopping</Link>
                 </button>
               </div>
               <div>
