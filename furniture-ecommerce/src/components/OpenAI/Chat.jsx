@@ -7,13 +7,11 @@ const Chat = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
-  // Menggunakan useEffect untuk mengirim pesan AI saat chatHistory berubah
   useEffect(() => {
     if (chatHistory.length === 0) return;
 
     const latestMessage = chatHistory[chatHistory.length - 1];
     if (latestMessage.role === "user") {
-      // Jika pesan terakhir dari pengguna, kirim pesan AI
       sendAIResponse();
     }
   }, [chatHistory]);
@@ -26,7 +24,7 @@ const Chat = () => {
         .join("\n");
 
       const response = await axios.post(
-        "https://api.openai.com/v1/engines/davinci/completions", // Ganti dengan endpoint yang sesuai
+        "https://api.openai.com/v1/engines/davinci/completions",
         {
           prompt: userMessages,
           max_tokens: 50,
@@ -57,7 +55,6 @@ const Chat = () => {
     <div className="chat-container">
       <div className="chat-history">
         {" "}
-        {/* Perbaiki atribut 'className' */}
         {chatHistory.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
             {message.content}
