@@ -94,6 +94,10 @@ const Header = () => {
     navigate("/chat");
   };
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
   return (
     <header className="header" ref={headerRef}>
       <div></div>
@@ -164,7 +168,11 @@ const Header = () => {
                 </span>
               </NavLink>
 
-              <div className="profile">
+              <div
+                className="profile"
+                onClick={handleProfileClick}
+                style={{ cursor: "pointer" }}
+              >
                 <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" />
               </div>
 
