@@ -9,6 +9,7 @@ import { cartActions } from "../redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -37,6 +38,7 @@ const Cart = () => {
 
   // Mengosongkan keranjang setelah melakukan checkout
   const handleCheckout = () => {
+    toast.success("Produk berhasil di checkout!", {});
     dispatch(cartActions.emptyCart());
   };
 
@@ -48,7 +50,7 @@ const Cart = () => {
           <Row>
             <Col lg="9">
               {cart.cartItems.length === 0 ? (
-                <h2 className="fs-4">Keranjang kosong!</h2>
+                <h2 className="fs-4">Cart empty!</h2>
               ) : (
                 <table className="table bordered">
                   <thead>
@@ -62,8 +64,8 @@ const Cart = () => {
                   </thead>
 
                   <tbody>
-                    {cart.cartItems.map((product) => (
-                      <tr key={product.id}>
+                    {cart.cartItems.map((product, index) => (
+                      <tr key={index}>
                         <td>
                           <img src={product.image} alt={product.productName} />
                         </td>
