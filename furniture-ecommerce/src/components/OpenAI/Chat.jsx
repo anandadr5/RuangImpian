@@ -23,10 +23,12 @@ const Chat = () => {
         .map((message) => message.content)
         .join("\n");
 
+      const prompt = `Ini adalah website e-commerce furnitur. ${userMessages}`;
+
       const response = await axios.post(
         "https://api.openai.com/v1/engines/davinci/completions",
         {
-          prompt: userMessages,
+          prompt: prompt,
           max_tokens: 50,
         },
         {
