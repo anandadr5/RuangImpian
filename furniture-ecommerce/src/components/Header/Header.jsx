@@ -129,38 +129,38 @@ const Header = () => {
                     <span>OpenAI</span>
                   </div>
                 </li>
+                {userLoggedIn ? (
+                  // Tampilkan tombol "Logout" jika pengguna sudah login
+                  <div
+                    className="logout"
+                    onClick={handleLogout}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <span>Logout</span>
+                  </div>
+                ) : (
+                  // Tampilkan tombol "Login" dan "Signup" jika pengguna belum login
+                  <>
+                    <div
+                      className="login"
+                      onClick={handleLogin}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <span>Login</span>
+                    </div>
+                    <div
+                      className="signup"
+                      onClick={handleSignup}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <span>Signup</span>
+                    </div>
+                  </>
+                )}
               </ul>
             </div>
 
             <div className="nav__icons">
-              {userLoggedIn ? (
-                // Tampilkan tombol "Logout" jika pengguna sudah login
-                <div
-                  className="logout"
-                  onClick={handleLogout}
-                  style={{ cursor: "pointer" }}
-                >
-                  <span>Logout</span>
-                </div>
-              ) : (
-                // Tampilkan tombol "Login" dan "Signup" jika pengguna belum login
-                <>
-                  <div
-                    className="login"
-                    onClick={handleLogin}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <span>Login</span>
-                  </div>
-                  <div
-                    className="signup"
-                    onClick={handleSignup}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <span>Signup</span>
-                  </div>
-                </>
-              )}
               <NavLink to="/cart">
                 <span className="cart__icon">
                   <i className="ri-shopping-cart-line"></i>
