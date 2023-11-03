@@ -20,9 +20,7 @@ export default function Index() {
 
       const response = await openai.completions.create({
         model: "davinci",
-        prompt:
-          `User: Rekomendasikan warna sofa yang cocok untuk ruang tamu minimalis dengan gaya dekorasi modern.` +
-          prompt,
+        prompt: `User: Rekomendasikan warna sofa yang cocok untuk ruang tamu minimalis dengan gaya dekorasi modern. ${prompt}`,
         max_tokens: 150,
       });
 
