@@ -8,13 +8,6 @@ import { useSelector } from "react-redux";
 const History = () => {
   const cart = useSelector((state) => state.cart);
 
-  // Fungsi untuk menghitung total harga dari item dalam history
-  const calculateTotalPrice = () => {
-    return cart.checkoutHistory.reduce((total, product) => {
-      return total + product.totalPrice;
-    }, 0);
-  };
-
   return (
     <Helmet title="History">
       <CommonSection title="Purchase History" />
@@ -55,7 +48,12 @@ const History = () => {
                 <h6 className="d-flex align-items-center justify-content-between">
                   Total Price
                 </h6>
-                <span className="fs-4 fw-bold">Rp {calculateTotalPrice()}</span>
+                <span className="fs-4 fw-bold">
+                  Rp{" "}
+                  {cart.checkoutHistory.reduce((total, product) => {
+                    return total + product.totalPrice;
+                  }, 0)}
+                </span>
               </div>
             </Col>
           </Row>

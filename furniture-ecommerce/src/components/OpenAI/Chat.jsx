@@ -1,79 +1,59 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import OpenAI from "openai";
 import "../../styles/chat.css";
 
-const Chat = () => {
-  const [inputText, setInputText] = useState("");
-  const [chatHistory, setChatHistory] = useState([]);
-  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+const openai = new OpenAI({
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
+});
 
-  useEffect(() => {
-    if (chatHistory.length === 0) return;
+export default function Index() {
+  const [prompt, setPrompt] = useState("");
+  const [result, setResult] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-    const latestMessage = chatHistory[chatHistory.length - 1];
-    if (latestMessage.role === "user") {
-      sendAIResponse();
-    }
-  }, [chatHistory]);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const sendAIResponse = async () => {
     try {
-      const userMessages = chatHistory
-        .filter((message) => message.role === "user")
-        .map((message) => message.content)
-        .join("\n");
+      setIsLoading(true);
 
-      const prompt = `Ini adalah website e-commerce furnitur. ${userMessages}`;
+      const response = await openai.completions.create({
+        model: "davinci",
+        prompt:
+          `User: Rekomendasikan warna sofa yang cocok untuk ruang tamu minimalis dengan gaya dekorasi modern.` +
+          prompt,
+        max_tokens: 150,
+      });
 
-      const response = await axios.post(
-        "https://api.openai.com/v1/engines/davinci/completions",
-        {
-          prompt: prompt,
-          max_tokens: 50,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-          },
-        }
-      );
-
-      const aiMessage = { role: "ai", content: response.data.choices[0].text };
-      setChatHistory([...chatHistory, aiMessage]);
+      setResult(response.choices[0].text);
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
-  };
-
-  const sendMessage = () => {
-    if (inputText.trim() === "") return;
-
-    const message = { role: "user", content: inputText };
-    setChatHistory([...chatHistory, message]);
-    setInputText("");
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-history">
-        {" "}
-        {chatHistory.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            {message.content}
-          </div>
-        ))}
-      </div>
-      <div className="chat-input">
-        <input
-          type="text"
-          placeholder="Type your message..."
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
-        <button onClick={sendMessage}>Send</button>
-      </div>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Pertanyaan:
+          <input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+          />
+        </label>
+        <button type="submit">Kirim</button>
+      </form>
+      {isLoading && <p className="loading">Loading...</p>}
+      {result && (
+        <div>
+          <h2>Jawaban:</h2>
+          <p className="response">{result}</p>
+        </div>
+      )}
     </div>
   );
-};
-
-export default Chat;
+}
